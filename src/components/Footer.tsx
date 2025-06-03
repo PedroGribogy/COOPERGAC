@@ -108,16 +108,16 @@ const Footer = () => {
                     const projectsComponent = document.getElementById('projetos');
                     if (projectsComponent) {
                       const filterButtons = projectsComponent.querySelectorAll('button');
-                      const residentialButton = Array.from(filterButtons).find(
-                        button => button.textContent === 'Residencial'
+                      const button = Array.from(filterButtons).find(
+                        button => button.textContent === 'Carregadores Elétricos'
                       );
-                      if (residentialButton) {
-                        residentialButton.click();
+                      if (button) {
+                        button.click();
                       }
                     }
                   }}
                 >
-                  Residencial
+                  Carregadores Elétricos
                 </Link>
               </li>
               <li>
@@ -132,16 +132,16 @@ const Footer = () => {
                     const projectsComponent = document.getElementById('projetos');
                     if (projectsComponent) {
                       const filterButtons = projectsComponent.querySelectorAll('button');
-                      const commercialButton = Array.from(filterButtons).find(
-                        button => button.textContent === 'Comercial'
+                      const button = Array.from(filterButtons).find(
+                        button => button.textContent === 'Energia por Assinatura'
                       );
-                      if (commercialButton) {
-                        commercialButton.click();
+                      if (button) {
+                        button.click();
                       }
                     }
                   }}
                 >
-                  Comercial
+                  Energia por Assinatura
                 </Link>
               </li>
               <li>
@@ -156,40 +156,16 @@ const Footer = () => {
                     const projectsComponent = document.getElementById('projetos');
                     if (projectsComponent) {
                       const filterButtons = projectsComponent.querySelectorAll('button');
-                      const industrialButton = Array.from(filterButtons).find(
-                        button => button.textContent === 'Industrial'
+                      const button = Array.from(filterButtons).find(
+                        button => button.textContent === 'Energia para sua Empresa'
                       );
-                      if (industrialButton) {
-                        industrialButton.click();
+                      if (button) {
+                        button.click();
                       }
                     }
                   }}
                 >
-                  Industrial
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="projetos"
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
-                  duration={500}
-                  className="text-gray-300 hover:text-yellow-400 transition-colors cursor-pointer"
-                  onClick={() => {
-                    const projectsComponent = document.getElementById('projetos');
-                    if (projectsComponent) {
-                      const filterButtons = projectsComponent.querySelectorAll('button');
-                      const ruralButton = Array.from(filterButtons).find(
-                        button => button.textContent === 'Rural'
-                      );
-                      if (ruralButton) {
-                        ruralButton.click();
-                      }
-                    }
-                  }}
-                >
-                  Rural
+                  Energia para sua Empresa
                 </Link>
               </li>
             </ul>

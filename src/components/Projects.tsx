@@ -4,36 +4,54 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 const projects = [
   {
     id: 1,
-    title: 'Residencial Villa Solar',
+    title: 'Carregadores Elétricos',
     description:
-      'Instalação de 32 painéis solares em condomínio residencial, gerando economia de 90% na conta de energia.',
-    image: 'https://images.pexels.com/photos/9875367/pexels-photo-9875367.jpeg',
-    type: 'Residencial',
+      'Adquira seu carregador elétrico de 20, 30 e 60 Kw. Oferecemos renda diária garantida, investimento com alta demanda, contrato com rentabilidade fixa por até 5 anos, sustentabilidade e inovação, valorização do seu espaço, baixo custo operacional e apoio técnico especializado.',
+    image: '/carregador-eletrico.jpg',
+    type: 'Carregadores Elétricos',
+    details: [
+      'Você fatura todos os dias com o uso do seu carregador por motoristas de veículos elétricos',
+      'O mercado de carros elétricos está crescendo rapidamente no Brasil',
+      'Receba por até 5 anos de forma garantida, por meio de locação ou parceria comercial',
+      'Pode instalar em condomínios, comércios, estacionamentos, postos',
+      'Equipamentos modernos com manutenção mínima e gestão automatizada via aplicativo'
+    ]
   },
   {
     id: 2,
-    title: 'Fazenda Luz do Sol',
+    title: 'Energia por Assinatura',
     description:
-      'Sistema off-grid para propriedade rural, garantindo autonomia energética mesmo em áreas remotas.',
-    image:
-      'https://images.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg',
-    type: 'Rural',
+      'PARE DE PAGAR CARO NA CONTA DE LUZ! Você pode reduzir sua conta de energia em até 15% sem placa solar, sem instalação, sem manutenção e sem custo algum! Zero investimento, zero dor de cabeça. A energia continua chegando normalmente, mas a conta vem quase zerada!',
+    image: 'https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg',
+    type: 'Energia por Assinatura',
+    details: [
+      'Economia sem investimento: Sem custo de instalação ou compra de equipamentos',
+      'Sem obras ou burocracia: Tudo digital e rápido, adesão 100% online',
+      'Energia limpa e sustentável: Consumo de energia renovável de usinas solares',
+      'Sem fidelidade ou multa: Contrato flexível com possibilidade de cancelamento sem multa',
+      'Compatível com qualquer imóvel: Residências, comércios ou empresas podem aderir',
+      'Fatura simplificada: A energia é compensada na sua conta com créditos de energia',
+      'Ideal para inquilinos: Solução perfeita para quem não pode instalar painéis solares'
+    ]
   },
   {
     id: 3,
-    title: 'Edifício Comercial Eco',
+    title: 'Energia para sua Empresa',
     description:
-      'Implementação de sistema fotovoltaico de 75kWp para centro empresarial, reduzindo custos operacionais.',
-    image: 'https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg',
-    type: 'Comercial',
-  },
-  {
-    id: 4,
-    title: 'Indústria Sustentável',
-    description:
-      'Projeto industrial com 220 painéis solares, suprindo 60% do consumo energético da operação.',
+      'ATÉ 35% DE ECONOMIA NA CONTA DE ENERGIA DA SUA EMPRESA. Empresas de média tensão com conta acima de R$ 10 mil agora podem migrar para o Mercado Livre de Energia. Entre para o mercado livre de energia com essa certeza.',
     image: 'https://images.pexels.com/photos/2800832/pexels-photo-2800832.jpeg',
-    type: 'Industrial',
+    type: 'Energia para sua Empresa',
+    details: [
+      'Economia significativa: Redução de até 35% na conta de energia',
+      'Previsibilidade e controle: Contratos com valores fixos ou reajustes pré-definidos',
+      'Liberdade de escolha: Escolha o fornecedor de energia que oferece as melhores condições',
+      'Sustentabilidade: Acesso a energia limpa e renovável, como solar, eólica ou de biomassa',
+      'Atendimento personalizado: Consultoria especializada para gestão do consumo',
+      'Competitividade: Redução de custos operacionais, permitindo mais competitividade no mercado',
+      'Energia 100% renovável com certificado rastreável',
+      'Atendimento por especialistas',
+      'A garantia da líder em energia livre no Brasil'
+    ]
   },
 ];
 
@@ -41,7 +59,7 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('Todos');
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const filters = ['Todos', 'Residencial', 'Comercial', 'Industrial', 'Rural'];
+  const filters = ['Todos', 'Carregadores Elétricos', 'Energia por Assinatura', 'Energia para sua Empresa'];
 
   const filteredProjects =
     activeFilter === 'Todos'
@@ -107,6 +125,16 @@ const Projects = () => {
                 <p className="text-gray-600">
                   {filteredProjects[currentIndex].description}
                 </p>
+                {filteredProjects[currentIndex].details && (
+                  <ul className="mt-4 space-y-2">
+                    {filteredProjects[currentIndex].details.map((detail, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-gray-600">
+                        <span className="text-green-900">•</span>
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
 
@@ -145,22 +173,6 @@ const Projects = () => {
             </p>
           </div>
         )}
-
-        <div className="mt-16 bg-green-900 rounded-lg p-8 text-white text-center">
-          <h3 className="text-2xl font-bold mb-4">
-            Sua conta de energia com até 95% de economia!
-          </h3>
-          <p className="mb-6 max-w-2xl mx-auto">
-            Adquira um sistema fotovoltaico e veja o retorno do seu investimento
-            todos os meses durante 30 anos!
-          </p>
-          <a
-            href="#contato"
-            className="bg-yellow-400 hover:bg-yellow-500 text-green-900 font-medium px-6 py-3 rounded-md transition-colors inline-block"
-          >
-            Solicitar Orçamento Gratuito
-          </a>
-        </div>
       </div>
     </section>
   );

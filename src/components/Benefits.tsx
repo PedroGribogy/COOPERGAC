@@ -8,29 +8,29 @@ const Benefits = () => {
         'Redução drástica na conta de luz, aliviando o orçamento mensal.',
     },
     {
-      title: 'Independência Energética',
+      title: 'Especialistas',
       description:
-        'Menor dependência das distribuidoras e das constantes altas tarifárias.',
+        'Atendimento por especialistas.',
     },
     {
-      title: 'Valorização do Imóvel',
+      title: 'Energia Renovável',
       description:
-        'Imóveis com energia solar são mais atrativos no mercado e têm maior valorização.',
+        'Energia 100% renovável, com certificado rastreável.',
     },
     {
-      title: 'Sustentabilidade',
+      title: 'Líder em energia',
       description:
-        'Geração de energia 100% limpa e renovável, sem emissão de poluentes.',
+        'A garantia da líder em energia livre no Brasil.',
     },
     {
-      title: 'Longa Durabilidade',
+      title: 'Investimento Zero',
       description:
-        'Equipamentos com vida útil de 25 anos ou mais e baixa manutenção.',
+        'É necessário investimento zero para começar.',
     },
     {
-      title: 'Retorno sobre o Investimento',
+      title: '15% de Desconto',
       description:
-        'Payback médio de 3 a 4 anos, com retorno garantido no longo prazo.',
+        'Você pode reduzir sua conta de energia em 15% pela energia por assinatura.',
     },
   ];
 

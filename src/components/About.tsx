@@ -1,4 +1,4 @@
-import { Sun, Leaf, Zap, Users } from 'lucide-react';
+import { Sun } from 'lucide-react';
 
 const About = () => {
   return (
@@ -42,37 +42,6 @@ const About = () => {
             "Onde propósito, tecnologia e fé caminham juntos."
             <div className="mt-4 text-base font-normal text-gray-500">COOPERGAC SOLAR ENERGY</div>
           </blockquote>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            {
-              icon: <Sun className="w-12 h-12 text-yellow-400" />,
-              title: "Energia Solar",
-              description: "Soluções completas em energia fotovoltaica para residências e empresas."
-            },
-            {
-              icon: <Leaf className="w-12 h-12 text-green-600" />,
-              title: "Sustentabilidade",
-              description: "Compromisso com o meio ambiente e as futuras gerações."
-            },
-            {
-              icon: <Zap className="w-12 h-12 text-yellow-500" />,
-              title: "Economia",
-              description: "Reduza sua conta de energia em até 95% com nossos sistemas."
-            },
-            {
-              icon: <Users className="w-12 h-12 text-green-700" />,
-              title: "Cooperação",
-              description: "Unindo pessoas e propósitos por um futuro melhor."
-            }
-          ].map((item, index) => (
-            <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="mb-4">{item.icon}</div>
-              <h3 className="text-xl font-semibold text-green-900 mb-2">{item.title}</h3>
-              <p className="text-gray-600">{item.description}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
