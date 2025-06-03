@@ -30,7 +30,7 @@ const Hero = () => {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="text-white space-y-6 md:pr-12">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-              Energia que <span className="text-yellow-400">une</span>, <br />
+              Pedro Energia que <span className="text-yellow-400">une</span>, <br />
               fé que <span className="text-yellow-400">move</span>, <br />
               futuro que <span className="text-yellow-400">transforma</span>.
             </h1>
