@@ -9,15 +9,15 @@ const Hero = () => {
     >
       {/* Sun rays background decoration */}
       <div className="absolute left-0 top-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute -left-20 top-1/4 w-1/2 h-1/2">
+        <div className="absolute -left-32 top-1/4 w-1/2 h-1/2">
           <div className="w-full h-full">
             {Array.from({ length: 8 }).map((_, i) => (
               <div
                 key={i}
                 className="absolute bg-yellow-400/40 h-[300px] w-[60px] origin-bottom"
                 style={{
-                  transform: `rotate(${i * 15}deg)`,
-                  left: '40%',
+                  transform: `rotate(${i * 25.5}deg)`,
+                  left: '20%',
                   top: '-150px',
                 }}
               />

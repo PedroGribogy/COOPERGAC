@@ -23,6 +23,8 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const menuItems = ['inicio', 'sobre', 'projetos', 'materias', 'contato'];
+
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -42,7 +44,7 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          {['inicio', 'sobre', 'projetos', 'contato'].map((item) => (
+          {menuItems.map((item) => (
             <Link
               key={item}
               to={item}
@@ -53,7 +55,7 @@ const Header = () => {
               className="text-white hover:text-yellow-400 transition-colors capitalize cursor-pointer"
               onClick={() => setIsMenuOpen(false)}
             >
-              {item}
+              {item === 'materias' ? 'Matérias' : item}
             </Link>
           ))}
           <Link
@@ -79,7 +81,7 @@ const Header = () => {
       {isMenuOpen && (
         <nav className="md:hidden bg-green-900 shadow-xl">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {['inicio', 'sobre', 'projetos', 'contato'].map((item) => (
+            {menuItems.map((item) => (
               <Link
                 key={item}
                 to={item}
@@ -90,7 +92,7 @@ const Header = () => {
                 className="text-white hover:text-yellow-400 transition-colors py-2 text-left capitalize cursor-pointer"
                 onClick={() => setIsMenuOpen(false)}
               >
-                {item}
+                {item === 'materias' ? 'Matérias' : item}
               </Link>
             ))}
             <Link
