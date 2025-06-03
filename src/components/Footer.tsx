@@ -1,51 +1,33 @@
-import { Sun } from 'lucide-react';
+import { Sun, Phone, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-green-900 text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center gap-2 mb-4">
+    <footer className="bg-green-900 text-white pt-16 pb-8">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Logo e Informações */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
               <Sun className="text-yellow-400 h-8 w-8" />
-              <h3 className="font-bold text-xl">
-                <span>COOPERGAC</span>
-                <span className="block text-xs text-yellow-400 tracking-wider">
+              <div>
+                <h3 className="font-bold text-xl">COOPERGAC</h3>
+                <span className="text-xs text-yellow-400 tracking-wider">
                   SOLAR ENERGY
                 </span>
-              </h3>
+              </div>
             </div>
-            <p className="text-gray-300 mb-4">
-              Energia que une, fé que move, futuro que transforma.
+            <p className="text-gray-300 text-sm">
+              Transformando energia solar em soluções sustentáveis para um futuro
+              melhor.
             </p>
-            {/* <div className="flex gap-4 mt-4">
-              <a href="#" className="text-white hover:text-yellow-400 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                </svg>
-              </a>
-              <a href="#" className="text-white hover:text-yellow-400 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-              </a>
-              <a href="#" className="text-white hover:text-yellow-400 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                </svg>
-              </a>
-  </div> */}
           </div>
 
+          {/* Links Rápidos */}
           <div>
-            <h4 className="font-semibold text-lg mb-4 text-yellow-400">
-              Navegação
-            </h4>
+            <h4 className="font-bold text-lg mb-4">Links Rápidos</h4>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -54,7 +36,7 @@ const Footer = () => {
                   smooth={true}
                   offset={-80}
                   duration={500}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors cursor-pointer"
                 >
                   Início
                 </Link>
@@ -66,9 +48,9 @@ const Footer = () => {
                   smooth={true}
                   offset={-80}
                   duration={500}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors cursor-pointer"
                 >
-                  Sobre Nós
+                  Sobre
                 </Link>
               </li>
               <li>
@@ -78,9 +60,21 @@ const Footer = () => {
                   smooth={true}
                   offset={-80}
                   duration={500}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors cursor-pointer"
                 >
                   Projetos
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="materias"
+                  spy={true}
+                  smooth={true}
+                  offset={-80}
+                  duration={500}
+                  className="text-gray-300 hover:text-yellow-400 transition-colors cursor-pointer"
+                >
+                  Matérias
                 </Link>
               </li>
               <li>
@@ -90,7 +84,7 @@ const Footer = () => {
                   smooth={true}
                   offset={-80}
                   duration={500}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors cursor-pointer"
                 >
                   Contato
                 </Link>
@@ -98,10 +92,9 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Tipos de Projetos */}
           <div>
-            <h4 className="font-semibold text-lg mb-4 text-yellow-400">
-              Serviços
-            </h4>
+            <h4 className="font-bold text-lg mb-4">Tipos de Projetos</h4>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -110,15 +103,13 @@ const Footer = () => {
                   smooth={true}
                   offset={-80}
                   duration={500}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors cursor-pointer"
                   onClick={() => {
-                    const projectsComponent =
-                      document.getElementById('projetos');
+                    const projectsComponent = document.getElementById('projetos');
                     if (projectsComponent) {
-                      const filterButtons =
-                        projectsComponent.querySelectorAll('button');
+                      const filterButtons = projectsComponent.querySelectorAll('button');
                       const residentialButton = Array.from(filterButtons).find(
-                        (button) => button.textContent === 'Residencial'
+                        button => button.textContent === 'Residencial'
                       );
                       if (residentialButton) {
                         residentialButton.click();
@@ -126,7 +117,7 @@ const Footer = () => {
                     }
                   }}
                 >
-                  Projetos Residenciais
+                  Residencial
                 </Link>
               </li>
               <li>
@@ -136,15 +127,13 @@ const Footer = () => {
                   smooth={true}
                   offset={-80}
                   duration={500}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors cursor-pointer"
                   onClick={() => {
-                    const projectsComponent =
-                      document.getElementById('projetos');
+                    const projectsComponent = document.getElementById('projetos');
                     if (projectsComponent) {
-                      const filterButtons =
-                        projectsComponent.querySelectorAll('button');
+                      const filterButtons = projectsComponent.querySelectorAll('button');
                       const commercialButton = Array.from(filterButtons).find(
-                        (button) => button.textContent === 'Comercial'
+                        button => button.textContent === 'Comercial'
                       );
                       if (commercialButton) {
                         commercialButton.click();
@@ -152,7 +141,7 @@ const Footer = () => {
                     }
                   }}
                 >
-                  Projetos Comerciais
+                  Comercial
                 </Link>
               </li>
               <li>
@@ -162,15 +151,13 @@ const Footer = () => {
                   smooth={true}
                   offset={-80}
                   duration={500}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors cursor-pointer"
                   onClick={() => {
-                    const projectsComponent =
-                      document.getElementById('projetos');
+                    const projectsComponent = document.getElementById('projetos');
                     if (projectsComponent) {
-                      const filterButtons =
-                        projectsComponent.querySelectorAll('button');
+                      const filterButtons = projectsComponent.querySelectorAll('button');
                       const industrialButton = Array.from(filterButtons).find(
-                        (button) => button.textContent === 'Industrial'
+                        button => button.textContent === 'Industrial'
                       );
                       if (industrialButton) {
                         industrialButton.click();
@@ -178,7 +165,7 @@ const Footer = () => {
                     }
                   }}
                 >
-                  Projetos Industriais
+                  Industrial
                 </Link>
               </li>
               <li>
@@ -188,15 +175,13 @@ const Footer = () => {
                   smooth={true}
                   offset={-80}
                   duration={500}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors cursor-pointer"
                   onClick={() => {
-                    const projectsComponent =
-                      document.getElementById('projetos');
+                    const projectsComponent = document.getElementById('projetos');
                     if (projectsComponent) {
-                      const filterButtons =
-                        projectsComponent.querySelectorAll('button');
+                      const filterButtons = projectsComponent.querySelectorAll('button');
                       const ruralButton = Array.from(filterButtons).find(
-                        (button) => button.textContent === 'Rural'
+                        button => button.textContent === 'Rural'
                       );
                       if (ruralButton) {
                         ruralButton.click();
@@ -204,53 +189,48 @@ const Footer = () => {
                     }
                   }}
                 >
-                  Projetos Rurais
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="projetos"
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
-                  duration={500}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer"
-                  onClick={() => {
-                    const projectsComponent =
-                      document.getElementById('projetos');
-                    if (projectsComponent) {
-                      const filterButtons =
-                        projectsComponent.querySelectorAll('button');
-                      const maintenanceButton = Array.from(filterButtons).find(
-                        (button) => button.textContent === 'Todos'
-                      );
-                      if (maintenanceButton) {
-                        maintenanceButton.click();
-                      }
-                    }
-                  }}
-                >
-                  Manutenção de Sistemas
+                  Rural
                 </Link>
               </li>
             </ul>
           </div>
 
+          {/* Contato */}
           <div>
-            <h4 className="font-semibold text-lg mb-4 text-yellow-400">
-              Contato
-            </h4>
-            <address className="not-italic text-gray-300">
-              <p className="mb-2">
-                São José dos Pinhais - Paraná, CEP 83.030-720
-              </p>
-              <p className="mb-2">contato@coopergac.com.br</p>
-              <p>+55 (41) 9926-6336</p>
-            </address>
+            <h4 className="font-bold text-lg mb-4">Contato</h4>
+            <ul className="space-y-4">
+              <li className="flex items-center gap-2">
+                <Phone className="text-yellow-400 h-5 w-5" />
+                <a
+                  href="tel:+554199266336"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  (41) 9926-6336
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="text-yellow-400 h-5 w-5" />
+                <a
+                  href="mailto:contato@coopergac.com.br"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  contato@coopergac.com.br
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="text-yellow-400 h-5 w-5 mt-1" />
+                <span className="text-gray-300">
+                  Rua Marechal Deodoro, 300
+                  <br />
+                  Centro, São José dos Pinhais - PR
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-green-800 mt-8 pt-8 text-center text-gray-400">
+        {/* Copyright */}
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
           <p>
             © {currentYear} COOPERGAC Solar Energy. Todos os direitos
             reservados. Feito por pKLabs - +55 (41) 99212-6614
