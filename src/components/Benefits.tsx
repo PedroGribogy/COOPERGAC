@@ -3,14 +3,14 @@ import { Check } from 'lucide-react';
 const Benefits = () => {
   const benefits = [
     {
-      title: 'Economia de até 95%',
+      title: 'Até 15% de Deconto',
       description:
-        'Redução drástica na conta de luz, aliviando o orçamento mensal.',
+        'Sem investimentos, sem manutenção, 15% de desconto de maneira simples e grátis.',
     },
     {
-      title: 'Especialistas',
+      title: 'Carregadores Eléticos',
       description:
-        'Atendimento por especialistas.',
+        'Você fatura todos os dias com o uso do seu carregador por motoristas de veículos elétricos.',
     },
     {
       title: 'Energia Renovável',
@@ -18,19 +18,19 @@ const Benefits = () => {
         'Energia 100% renovável, com certificado rastreável.',
     },
     {
-      title: 'Líder em energia',
+      title: 'Mercado Livre de Energia',
       description:
         'A garantia da líder em energia livre no Brasil.',
     },
     {
-      title: 'Investimento Zero',
+      title: 'Usina de Investimento',
       description:
-        'É necessário investimento zero para começar.',
+        'Usina de Investimento.',
     },
     {
-      title: '15% de Desconto',
+      title: 'Usina de Redução',
       description:
-        'Você pode reduzir sua conta de energia em 15% pela energia por assinatura.',
+        '95% de redução na conta de energia.',
     },
   ];
 
