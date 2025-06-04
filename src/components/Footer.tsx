@@ -209,7 +209,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
           <p>
             © {currentYear} COOPERGAC Solar Energy. Todos os direitos
-            reservados. Feito por pKLabs - +55 (41) 99212-6614
+            reservados. Feito por Codexy - +55 (41) 99212-6614
           </p>
         </div>
       </div>
