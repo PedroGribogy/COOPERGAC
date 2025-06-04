@@ -181,7 +181,7 @@ const Footer = () => {
                   href="tel:+554199266336"
                   className="text-gray-300 hover:text-yellow-400 transition-colors"
                 >
-                  (41) 9926-6336
+                  +55 (41) 98535-4399
                 </a>
               </li>
               <li className="flex items-center gap-2">

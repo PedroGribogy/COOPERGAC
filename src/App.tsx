@@ -23,7 +23,7 @@ function App() {
 
       {/* Botão do WhatsApp fixo e responsivo */}
       <a
-        href="https://wa.me/554199266336?text=Olá%2C+gostaria+de+solicitar+um+orçamento!"
+        href="https://wa.me/554185354399?text=Quero%20solicitar%20um%20or%C3%A7amento%21"
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-button"

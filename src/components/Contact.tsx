@@ -23,7 +23,7 @@ const Contact = () => {
     const whatsappMessage = `*Nova mensagem de contato*%0A%0A*Nome:* ${formData.name}%0A*Email:* ${formData.email}%0A*Telefone:* ${formData.phone}%0A%0A*Mensagem:*%0A${formData.message}`;
 
     // Número do WhatsApp da empresa
-    const phoneNumber = '5541999266336';
+    const phoneNumber = '5541985354399';
 
     // Cria o link do WhatsApp com a mensagem formatada
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
@@ -138,7 +138,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Telefone</h4>
-                  <p className="text-gray-600">+55 (41) 9926-6336</p>
+                  <p className="text-gray-600">+55 (41) 98535-4399</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
