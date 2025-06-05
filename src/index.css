@@ -126,3 +126,24 @@ h6 {
     padding: 6px;
   }
 }
+/* Video styles */
+video {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+video::-webkit-media-controls {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  video::-webkit-media-controls {
+    transform: scale(0.8);
+  }
+  
+  video {
+    width: 100%;
+    border-radius: 8px;
+  }
+}
