@@ -3,12 +3,12 @@ import { Check } from 'lucide-react';
 const Benefits = () => {
   const benefits = [
     {
-      title: 'Até 15% de Deconto',
+      title: 'Até 15% de Desconto',
       description:
         'Sem investimentos, sem manutenção, 15% de desconto de maneira simples e grátis.',
     },
     {
-      title: 'Carregadores Eléticos',
+      title: 'Carregadores Elétricos',
       description:
         'Você fatura todos os dias com o uso do seu carregador por motoristas de veículos elétricos.',
     },
