@@ -25,21 +25,29 @@ const About = () => {
               Mais do que uma empresa de geração distribuída, somos um organismo vivo de fé, inovação e responsabilidade socioambiental.
             </p>
           </div>
-          <div className="relative">
-            <div className="relative z-10 rounded-lg shadow-xl overflow-hidden h-[650px]">
+          <div className="flex justify-center">
+            <div className="video-wrapper">
               <video 
-                className="w-full h-full rounded-lg object-cover"
                 muted
                 autoPlay
                 loop
                 playsInline
+                preload="auto"
+                webkit-playsinline="true"
+                playsinline="true"
+                x-webkit-airplay="allow"
+                x5-video-player-type="h5-page"
+                x5-video-orientation="portrait"
+                style={{
+                  '-webkit-media-controls': 'none',
+                  '-moz-media-controls': 'none',
+                  '-ms-media-controls': 'none',
+                  'media-controls': 'none',
+                }}
               >
-                <source src="/Vídeo do WhatsApp de 2025-06-05 à(s) 15.14.42_57239e3f.mp4" type="video/mp4" />
-                Seu navegador não suporta o elemento de vídeo.
+                <source src="/video-fundo.webm" type="video/webm" />
               </video>
             </div>
-            <div className="absolute -bottom-4 -right-4 w-40 h-40 bg-yellow-400/20 rounded-full z-0"></div>
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-green-900/10 rounded-full z-0"></div>
           </div>
         </div>
 
