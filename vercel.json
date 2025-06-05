@@ -1,0 +1,30 @@
+{
+    "version": 2,
+    "routes": [
+      {
+        "src": "/video-fundo.webm",
+        "headers": {
+          "Content-Type": "video/webm",
+          "Cache-Control": "public, max-age=31536000, immutable"
+        }
+      },
+      {
+        "src": "/video-fundo.mp4",
+        "headers": {
+          "Content-Type": "video/mp4",
+          "Cache-Control": "public, max-age=31536000, immutable"
+        }
+      }
+    ],
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
+    ]
+  } 
