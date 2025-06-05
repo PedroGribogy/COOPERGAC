@@ -1,7 +1,37 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Sun } from 'lucide-react';
 
 const About = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && videoRef.current) {
+          videoRef.current.muted = false;
+        } else if (videoRef.current) {
+          videoRef.current.muted = true;
+        }
+      });
+    }, options);
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        observer.unobserve(videoRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section id="sobre" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -28,22 +58,12 @@ const About = () => {
           <div className="flex justify-center">
             <div className="video-wrapper">
               <video 
-                muted
+                ref={videoRef}
                 autoPlay
                 loop
                 playsInline
                 preload="auto"
-                webkit-playsinline="true"
-                playsinline="true"
-                x-webkit-airplay="allow"
-                x5-video-player-type="h5-page"
-                x5-video-orientation="portrait"
-                style={{
-                  '-webkit-media-controls': 'none',
-                  '-moz-media-controls': 'none',
-                  '-ms-media-controls': 'none',
-                  'media-controls': 'none',
-                }}
+                muted
               >
                 <source src="/video-fundo.webm" type="video/webm" />
               </video>
@@ -56,71 +76,6 @@ const About = () => {
             "Onde propósito, tecnologia e fé caminham juntos."
             <div className="mt-4 text-base font-normal text-gray-500">COOPERGAC SOLAR ENERGY</div>
           </blockquote>
-        </div>
-
-        {/* Ecossistema COOPERGAC */}
-        <div className="mt-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">Nosso ecossistema</h2>
-            <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
-          </div>
-
-          <div className="relative w-[700px] h-[700px] mx-auto">
-            {/* Círculo central */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="bg-green-900 rounded-full w-48 h-48 flex items-center justify-center">
-                <div className="text-center">
-                  <h3 className="text-white text-xl font-bold mb-2">Ecossistema</h3>
-                  <h4 className="text-yellow-400 text-xl font-bold">COOPERGAC</h4>
-                </div>
-              </div>
-            </div>
-
-            {/* Usina de geração de conta energia - Topo */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2" style={{ transform: 'translate(-50%, 40px)' }}>
-              <div className="bg-yellow-400 rounded-lg px-6 py-3 shadow-md w-64 text-center">
-                <p className="text-green-900 font-semibold">
-                  Usina de geração de conta energia
-                </p>
-              </div>
-            </div>
-
-            {/* Usina de investimento - Direita */}
-            <div className="absolute" style={{ top: '50%', right: '40px', transform: 'translateY(-50%)' }}>
-              <div className="bg-yellow-400 rounded-lg px-6 py-3 shadow-md w-64 text-center">
-                <p className="text-green-900 font-semibold">
-                  Usina de investimento
-                </p>
-              </div>
-            </div>
-
-            {/* Energia do mercado livre - Baixo */}
-            <div className="absolute bottom-0 left-1/2" style={{ transform: 'translate(-50%, -40px)' }}>
-              <div className="bg-yellow-400 rounded-lg px-6 py-3 shadow-md w-64 text-center">
-                <p className="text-green-900 font-semibold">
-                  Energia do mercado livre
-                </p>
-              </div>
-            </div>
-
-            {/* Energia por assinatura - Esquerda */}
-            <div className="absolute" style={{ top: '50%', left: '40px', transform: 'translateY(-50%)' }}>
-              <div className="bg-yellow-400 rounded-lg px-6 py-3 shadow-md w-64 text-center">
-                <p className="text-green-900 font-semibold">
-                  Energia por assinatura
-                </p>
-              </div>
-            </div>
-
-            {/* Carregadores elétricos - Entre baixo e direita */}
-            <div className="absolute" style={{ bottom: '25%', right: '25%', transform: 'translate(50%, 50%)' }}>
-              <div className="bg-yellow-400 rounded-lg px-6 py-3 shadow-md w-64 text-center">
-                <p className="text-green-900 font-semibold">
-                  Carregadores elétricos
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
