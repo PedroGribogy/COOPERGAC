@@ -91,12 +91,30 @@ const About = () => {
                 autoPlay
                 loop
                 playsInline
-                preload="metadata"
                 muted
+                controls={false}
+                webkit-playsinline="true"
+                x5-playsinline="true"
+                x5-video-player-type="h5"
+                x5-video-player-fullscreen="true"
                 className={`transition-opacity duration-300 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
                 onLoadStart={() => setIsVideoLoaded(false)}
+                onCanPlay={() => {
+                  setIsVideoLoaded(true);
+                  if (videoRef.current) {
+                    videoRef.current.play().catch(() => {
+                      console.log('Playback failed, trying again...');
+                      if (videoRef.current) {
+                        videoRef.current.muted = true;
+                        videoRef.current.play().catch(() => {
+                          console.log('Playback failed even with muted video');
+                        });
+                      }
+                    });
+                  }
+                }}
                 style={{ 
-                  background: 'transparent',
+                  backgroundColor: 'transparent',
                   objectFit: 'cover'
                 }}
               >
