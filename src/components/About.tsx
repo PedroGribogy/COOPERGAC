@@ -95,6 +95,10 @@ const About = () => {
                 muted
                 className={`transition-opacity duration-300 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
                 onLoadStart={() => setIsVideoLoaded(false)}
+                style={{ 
+                  background: 'transparent',
+                  objectFit: 'cover'
+                }}
               >
                 <source src="/video-fundo.webm" type="video/webm" />
                 <source src="/video-fundo.mp4" type="video/mp4" />

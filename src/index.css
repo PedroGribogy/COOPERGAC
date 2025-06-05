@@ -153,25 +153,21 @@ video::-webkit-media-controls {
   width: 366px;
   height: 650px;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: black;
-  border-radius: 12px;
   overflow: hidden;
+  border-radius: 12px;
+  background: transparent;
 }
 
 .video-wrapper video {
-  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  z-index: 1;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
-  border-radius: 12px;
+  background: transparent;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Remove all default video controls and overlays */
