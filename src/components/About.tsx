@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Sun } from 'lucide-react';
 
-const About = () => {
+const About: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -90,13 +90,9 @@ const About = () => {
                 ref={videoRef}
                 autoPlay
                 loop
-                playsInline
+                playsInline={true}
                 muted
                 controls={false}
-                webkit-playsinline="true"
-                x5-playsinline="true"
-                x5-video-player-type="h5"
-                x5-video-player-fullscreen="true"
                 className={`transition-opacity duration-300 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
                 onLoadStart={() => setIsVideoLoaded(false)}
                 onCanPlay={() => {
@@ -115,11 +111,13 @@ const About = () => {
                 }}
                 style={{ 
                   backgroundColor: 'transparent',
-                  objectFit: 'cover'
+                  objectFit: 'cover',
+                  width: '100%',
+                  height: '100%'
                 }}
               >
-                <source src="/video-fundo.webm" type="video/webm" />
                 <source src="/video-fundo.mp4" type="video/mp4" />
+                <source src="/video-fundo.webm" type="video/webm" />
               </video>
             </div>
           </div>
