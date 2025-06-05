@@ -1,10 +1,29 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Sun } from 'lucide-react';
 
 const About = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleCanPlay = () => {
+      setIsVideoLoaded(true);
+      if (video.paused) {
+        video.play().catch(() => {
+          // Silently handle auto-play rejection
+        });
+      }
+    };
+
+    const handleError = () => {
+      setHasError(true);
+      console.error('Error loading video');
+    };
+
     const options = {
       root: null,
       rootMargin: '0px',
@@ -13,24 +32,34 @@ const About = () => {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && videoRef.current) {
-          videoRef.current.muted = false;
-        } else if (videoRef.current) {
-          videoRef.current.muted = true;
+        if (entry.isIntersecting && video) {
+          video.muted = false;
+          if (video.paused && isVideoLoaded) {
+            video.play().catch(() => {
+              // Silently handle play rejection
+            });
+          }
+        } else if (video) {
+          video.muted = true;
         }
       });
     }, options);
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+    video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener('error', handleError);
+    observer.observe(video);
+
+    // Força o recarregamento do vídeo se houver erro
+    if (hasError) {
+      video.load();
     }
 
     return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current);
-      }
+      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('error', handleError);
+      observer.unobserve(video);
     };
-  }, []);
+  }, [isVideoLoaded, hasError]);
 
   return (
     <section id="sobre" className="py-20 bg-white">
@@ -62,10 +91,13 @@ const About = () => {
                 autoPlay
                 loop
                 playsInline
-                preload="auto"
+                preload="metadata"
                 muted
+                className={`transition-opacity duration-300 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                onLoadStart={() => setIsVideoLoaded(false)}
               >
                 <source src="/video-fundo.webm" type="video/webm" />
+                <source src="/video-fundo.mp4" type="video/mp4" />
               </video>
             </div>
           </div>
