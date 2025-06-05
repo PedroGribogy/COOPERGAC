@@ -1,65 +1,65 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Sun } from 'lucide-react';
+import { Sun, Volume2, VolumeX } from 'lucide-react';
 
 const About: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleCanPlay = () => {
-      setIsVideoLoaded(true);
-      if (video.paused) {
-        video.play().catch(() => {
-          // Silently handle auto-play rejection
-        });
-      }
+    // Pré-carrega o vídeo
+    const preloadVideo = () => {
+      setIsLoading(true);
+      video.load();
     };
 
-    const handleError = () => {
-      setHasError(true);
-      console.error('Error loading video');
+    const handleCanPlay = () => {
+      setIsVideoLoaded(true);
+      setIsLoading(false);
+      video.play().catch(() => {
+        console.log('Autoplay failed, keeping video muted');
+      });
     };
 
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.5
+      threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && video) {
-          video.muted = false;
-          if (video.paused && isVideoLoaded) {
-            video.play().catch(() => {
-              // Silently handle play rejection
-            });
-          }
-        } else if (video) {
-          video.muted = true;
+        if (entry.isIntersecting && video && video.paused) {
+          video.play().catch(() => {
+            console.log('Playback failed on intersection');
+          });
         }
       });
     }, options);
 
-    video.addEventListener('canplay', handleCanPlay);
-    video.addEventListener('error', handleError);
-    observer.observe(video);
+    // Inicia o pré-carregamento
+    preloadVideo();
 
-    // Força o recarregamento do vídeo se houver erro
-    if (hasError) {
-      video.load();
-    }
+    video.addEventListener('canplay', handleCanPlay);
+    observer.observe(video);
 
     return () => {
       video.removeEventListener('canplay', handleCanPlay);
-      video.removeEventListener('error', handleError);
       observer.unobserve(video);
     };
-  }, [isVideoLoaded, hasError]);
+  }, []);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      const video = videoRef.current;
+      video.muted = !video.muted;
+      setIsMuted(video.muted);
+    }
+  };
 
   return (
     <section id="sobre" className="py-20 bg-white">
@@ -85,40 +85,48 @@ const About: React.FC = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <div className="video-wrapper">
+            <div className="video-wrapper relative w-full h-[400px] overflow-hidden rounded-lg shadow-lg bg-green-50">
+              {/* Loading placeholder */}
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-green-50 z-10">
+                  <div className="animate-pulse flex flex-col items-center">
+                    <Sun className="w-12 h-12 text-green-900 animate-spin-slow" />
+                    <span className="mt-4 text-green-900">Carregando...</span>
+                  </div>
+                </div>
+              )}
+              
+              {/* Video */}
               <video 
                 ref={videoRef}
                 autoPlay
                 loop
-                playsInline={true}
-                muted
-                controls={false}
-                className={`transition-opacity duration-300 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
-                onLoadStart={() => setIsVideoLoaded(false)}
-                onCanPlay={() => {
-                  setIsVideoLoaded(true);
-                  if (videoRef.current) {
-                    videoRef.current.play().catch(() => {
-                      console.log('Playback failed, trying again...');
-                      if (videoRef.current) {
-                        videoRef.current.muted = true;
-                        videoRef.current.play().catch(() => {
-                          console.log('Playback failed even with muted video');
-                        });
-                      }
-                    });
-                  }
-                }}
-                style={{ 
-                  backgroundColor: 'transparent',
-                  objectFit: 'cover',
-                  width: '100%',
-                  height: '100%'
-                }}
+                playsInline
+                muted={isMuted}
+                preload="auto"
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                onLoadStart={() => setIsLoading(true)}
               >
                 <source src="/video-fundo.mp4" type="video/mp4" />
                 <source src="/video-fundo.webm" type="video/webm" />
               </video>
+
+              {/* Sound toggle button */}
+              {isVideoLoaded && (
+                <button
+                  onClick={toggleMute}
+                  className="absolute bottom-4 right-4 p-3 bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-300 text-green-900 hover:text-green-700 z-20 cursor-pointer touch-manipulation"
+                  title={isMuted ? "Ativar som" : "Desativar som"}
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                  aria-label={isMuted ? "Ativar som" : "Desativar som"}
+                >
+                  {isMuted ? (
+                    <VolumeX className="w-7 h-7" />
+                  ) : (
+                    <Volume2 className="w-7 h-7" />
+                  )}
+                </button>
+              )}
             </div>
           </div>
         </div>
